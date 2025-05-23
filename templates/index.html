@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>4th Floor</title>
     <style>
-        /* Background starfield animation */
+
         body {
             margin: 0;
             height: 100vh;
@@ -19,7 +19,6 @@
             flex-direction: column;
         }
 
-        /* Star container */
         .stars {
             position: absolute;
             width: 100%;
@@ -30,12 +29,11 @@
             animation: twinkle 10s infinite;
         }
 
-        /* Individual stars */
+
         .stars div {
             animation: floatStars 10s linear infinite;
         }
 
-        /* Form container */
         .container {
             position: relative;
             background: rgba(10, 10, 30, 0.8);
@@ -98,13 +96,13 @@
             min-height: 2em;
         }
 
-        /* twinkle animation */
+
         @keyframes twinkle {
             0%, 100% {opacity: 0.9;}
             50% {opacity: 0.4;}
         }
 
-        /* float stars animation */
+
         @keyframes floatStars {
             0% {
                 transform: translate(0, 0);
