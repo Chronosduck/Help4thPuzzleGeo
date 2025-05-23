@@ -1,0 +1,17 @@
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    result = ""
+    if request.method == "POST":
+        user_input = request.form["input"]
+        # Logic ของคุณ
+        result = f"ผลลัพธ์ของคุณคือ: {user_input[::-1]}"  # แค่ reverse ตัวอย่าง
+    return render_template("index.html", result=result)
+
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0", port=10000)
+
+

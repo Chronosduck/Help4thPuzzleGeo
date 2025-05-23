@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Hidden Python App</title>
+</head>
+<body>
+    <form method="POST">
+        <input type="text" name="input" placeholder="ใส่อะไรก็ได้">
+        <button type="submit">ส่ง</button>
+    </form>
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
