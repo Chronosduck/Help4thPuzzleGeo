@@ -1,18 +1,33 @@
-from flask import Flask, request, render_template
-
-app = Flask(__name__)
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    result = ""
-    if request.method == "POST":
-        user_input = request.form["input"]
-        # Logic ของคุณ
-        result = f"ผลลัพธ์ของคุณคือ: {user_input[::-1]}"  # แค่ reverse ตัวอย่าง
-    return render_template("index.html", result=result)
-
-if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0", port=10000)
-
-
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <title>Success Page</title>
+    <style>
+        body {
+            background-color: #000011;
+            color: #7ec8e3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            text-shadow: 0 0 10px #1f7bbf;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #a0d8ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 ยินดีด้วย! คุณใส่ input ถูกต้อง</h1>
+    <p>นี่คือหน้าผลลัพธ์ s1.html</p>
+</body>
+</html>
 
