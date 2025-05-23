@@ -1,15 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My Hidden Python App</title>
+    <style>
+        /* Background starfield animation */
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(ellipse at center, #000011 0%, #000000 80%);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Star dots */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 0;
+            pointer-events: none;
+            animation: twinkle 10s infinite;
+        }
+
+        /* Form container */
+        .container {
+            position: relative;
+            background: rgba(10, 10, 30, 0.8);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(100, 150, 255, 0.7);
+            z-index: 1;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7ec8e3;
+            text-shadow: 0 0 10px #1f7bbf;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            outline: none;
+            box-shadow: inset 0 0 8px #4a90e2;
+            background: #0a1430;
+            color: #e0f0ff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            box-shadow: 0 0 12px #7ec8e3;
+        }
+
+        button {
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            color: #fff;
+            background: linear-gradient(45deg, #007acc, #004a99);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 15px #007acc99;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #004a99, #007acc);
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: #a0d8ff;
+            text-shadow: 0 0 8px #4a90e2;
+            min-height: 2em;
+        }
+
+        /* twinkle animation */
+        @keyframes twinkle {
+            0%, 100% {opacity: 0.9;}
+            50% {opacity: 0.4;}
+        }
+    </style>
 </head>
 <body>
-    <form method="POST">
-        <input type="text" name="input" placeholder="ใส่อะไรก็ได้">
-        <button type="submit">ส่ง</button>
-    </form>
-    {% if result %}
-        <p>{{ result }}</p>
-    {% endif %}
+    <div class="stars"></div>
+    <div class="container">
+        <h1>🪐 ดาราศาสตร์แห่งโค้ด</h1>
+        <form method="POST">
+            <input type="text" name="input" placeholder="ใส่อะไรก็ได้">
+            <button type="submit">ส่ง</button>
+        </form>
+        {% if result %}
+            <div class="result">{{ result }}</div>
+        {% endif %}
+    </div>
+
+    <script>
+        // สร้างดาวเล็กๆ จำนวนมากแบบสุ่ม
+        const starsContainer = document.querySelector('.stars');
+        const starCount = 100;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.background = 'white';
+            star.style.borderRadius = '50%';
+            star.style.opacity = Math.random();
+            star.style.width = star.style.height = `${Math.random() * 2 + 1}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.filter = `drop-shadow(0 0 2px white)`;
+            starsContainer.appendChild(star);
+        }
+    </script>
 </body>
 </html>
